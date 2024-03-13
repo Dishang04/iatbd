@@ -1,0 +1,153 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-weight: 400;
+    min-height: 100vh;
+    font-size: 1.8rem;
+    font-family: "Epilogue", sans-serif;
+}
+
+h1{
+    font-size: 3.2rem;
+    font-weight: 500;
+}
+
+/* FORM LAYOUTS (welcome, register, login) IPHONE SCREEN*/
+.formHeader{
+    margin: 5% 5%;
+}
+
+.form{
+    border-radius: 0.5rem;
+    background-color: #f2f2f2;
+    padding: 2rem;
+    /* width: 80%; */
+    margin: 2% 5%;
+}
+
+.form input[type=text], [type=email], [type=password]{
+    width: 100%;
+    padding: 1rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.4rem;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    /* resize: vertical; */
+}
+
+.form input[type=radio]{
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.error{
+    color: red;
+}
+
+@media screen and (min-width: 1000px){
+    .formHeader{
+        margin: 1% 10%;
+    }
+    .form{
+        margin: auto;
+        width: 80%;
+    }
+    .form input[type=text], [type=email], [type=password]{
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* BUTTON LAYOUTS (welcome, register, login) */
+.optionsButton{
+    background-color: green;
+    padding: 1rem;
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.8rem;
+}
+
+.optionsButton:hover{
+    background-color: #45a049;
+} 
+
+.formProfileChange{
+    background-color: red;
+}
+
+/* LANDING/WELCOME PAGE */
+.welcomeHeader{
+    margin: 2% 10%;
+}
+
+.welcomeOptions{
+    background-color: grey;
+    margin: 5% auto;
+    padding: 2rem;
+    border: 0.1rem solid #888;
+    width: 80%;
+}
+
+@media screen and (min-width: 1000px){
+    .welcomeHeader{
+        margin: 2% 10%;
+    }
+    .welcomeOptions{
+        margin: auto;
+        width: 80%;
+    }
+}
+
+/* LOGIN PAGE */
+.buttonContainer{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgotPwdButton{
+    margin-left: 2%;
+}
+
+.loginButton{
+    margin-right: auto;
+    width: 30%;
+}
+
+.prevButton{
+    background-color: red;
+    width: 30%;
+    text-align: center;
+}
+
+@media screen and (min-width: 1000px){
+    .forgotPwdButton{
+        margin-left: 4%;
+    }
+    .loginButton{
+        width: 20%;
+    }
+    .prevButton{
+        width: 20%;
+    }
+}
+
+/* REGISTER PAGE */
+.buttonRegisterContainer{
+    margin: 0% 0% 1% 0%;
+}

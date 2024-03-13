@@ -1,0 +1,199 @@
+body {
+    font-weight: 400;
+    min-height: 100vh;
+    font-size: 18px;
+    font-family: "Epilogue", sans-serif;
+}
+
+/* MY PETS PAGE (pets.index) / OVERVIEW PAGE (pets.show) */
+.myPetsHeader{
+    font-size: 36px;
+    text-align: center;
+    margin: 5%;
+}
+
+.addPetButton{
+    background-color: green;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 10%;
+}
+
+.addPetButton:hover{
+    background-color: #45a049;
+} 
+
+.petsList{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 40px;
+    grid-column-gap: 40px;
+    padding: 40px;
+}
+
+.petItem{
+    list-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.petItem > h2{
+    font-size: 24px;
+    background-color: blue;
+    text-align: center;
+    color: white;
+    padding: 20px 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+  
+/* .petItem > figure > img{
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+} */
+  
+.petItem > p{
+    padding: 22px;
+  }
+
+.petItem:hover{
+    transform: translateY(-10px);
+    transition: 0.2s all;
+    box-shadow: 0 14px 8px 0 rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1000px){
+    .myPetsHeader{
+        margin: 1% 0%;
+    }
+    .addPetButton{
+        float: right;
+        width: 20%;
+        margin-right: 41px;
+    }
+    .petsList{
+        grid-template-columns: 1fr 1fr;
+        margin-top: 5%;
+    }
+    .listOverview{
+        margin-top: 0%;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .petsList{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* ADD PET PAGE (pets.create) */
+.addPetHeader{
+    font-size: 32px;
+    margin: 1% 5%;
+}
+
+.formAddPet{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 5px;
+    margin: 2% 5%;
+}
+
+.labelAddPet{
+    margin-left: 20px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.formAddPet input[type=text], input[type=date], input[type=integer]{
+    width: 90%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: auto;
+    font-size: 22px;
+}
+
+.buttonContainer{
+    margin: 10%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 90%;
+}
+
+.addButton{
+    margin-right: auto;
+    width: 35%;
+    padding: 10px;
+    font-size: 18px;
+    /* background-color: see blade file because tailwind; */
+}
+
+.prevButton{
+    background-color: red;
+    width: 35%;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+}
+
+@media screen and (min-width: 1000px){
+    .addPetHeader{
+        margin: 1% 15%;
+    }
+    .formAddPet{
+        margin: 2% 15%;
+    }
+    .labelAddPet{
+        margin-left: 35px;
+    }
+    .buttonContainer{
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .labelAddPet{
+        margin-left: 50px;
+    }
+    .buttonContainer{
+        margin-bottom: 5%;
+    }
+}
+
+/* INFORMATION PAGE */
+.informationContainer{
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+p{
+    /* font-size: 110%; */
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+@media screen and (min-width: 1000px){
+    .informationContainer{
+        width: 45%;
+    }
+}
+  
