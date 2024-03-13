@@ -7,7 +7,7 @@
     <section class="petsList">
         @foreach ($pets as $pet)
             @if ($pet->user->is(auth()->user()))
-                <div class="petItem">
+                <div class="myItem">
                     <h2> {{ $pet->name }}</h2>
                     <p>Eigennaar naam: {{ $pet->user->name }}</p>
                     <p class="">Soort dier: {{ $pet->species }}</p>
