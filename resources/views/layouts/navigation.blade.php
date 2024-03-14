@@ -44,7 +44,14 @@
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profiel') }}
-                        </x-dropdown-link>                    
+                        </x-dropdown-link>
+                    
+                        @if (Auth::user()->sitter == 0)  
+                            <x-dropdown-link :href="route('pets.index')">
+                                {{ __('Mijn Huisdieren') }}
+                            </x-dropdown-link>
+                        @endif
+                       
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

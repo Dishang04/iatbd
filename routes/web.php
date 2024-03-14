@@ -44,4 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/pets/filter', [PetController::class, 'filter'])->name('pets.filter');
+
+
 require __DIR__.'/auth.php';

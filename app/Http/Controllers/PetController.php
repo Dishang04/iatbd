@@ -19,6 +19,21 @@ class PetController extends Controller
         ]);
     }
 
+    public function filter(Request $request): View
+{
+    $query = Pet::query();
+
+    if ($request->has('species')) {
+        $query->whereIn('species', $request->input('species'));
+    }
+
+    // You can add more filters as needed
+
+    $pets = $query->with('user')->latest()->get();
+
+    return view('pets.show', ['pets' => $pets]);
+}
+
     /**
      * Show the form for creating a new resource.
      */
@@ -83,4 +98,17 @@ class PetController extends Controller
     {
         //
     }
+
+    public function filterAnimals(Request $request)
+{
+    $query = Pet::query();
+
+    if ($request->has('species')) {
+        $query->whereIn('species', $request->input('species'));
+    }
+
+    $animals = $query->get();
+
+    return view('pets.show', compact('animals'));
+}
 }

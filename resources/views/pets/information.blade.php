@@ -10,6 +10,8 @@
         <p class="">Belangrijke zaken: {{ $pet->details }}</p> 
     </section>
 
+    <a href="{{ route('messages.index') }}">Stel hier al uw vragen</a>
+
     {{-- <section class="informationContainer">
         <h2> Chat </h2>
         <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
