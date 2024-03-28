@@ -21,6 +21,9 @@
                     <p>Eigennaar naam: {{ $pet->user->name }}</p>
                     <p class="">Soort dier: {{ $pet->species }}</p>
                     <p class="">Wanneer: {{ date('d-m-y', strtotime($pet->when)) }}</p> 
+                    @if ($pet->image)
+                        <img src="{{ asset('storage/' . $pet->image) }}" alt="{{ $pet->name }}">
+                    @endif
                 </div> 
             </a>
         @endforeach

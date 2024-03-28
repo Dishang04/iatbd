@@ -54,8 +54,14 @@ class PetController extends Controller
             'hourlyRate' => ['required', 'string'],
             'durationHours' => ['required', 'integer', 'max:255'],
             'details' => [''],
+            'image' => ['image', 'max:2048'], // Max file size: 2MB
             // 'question' => ['required', 'string', 'max:255'],
         ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('pets', 'public');
+            $validated['image'] = $imagePath;
+        }
 
         $request->user()->pets()->create($validated);
         return redirect()->route('pets.index');

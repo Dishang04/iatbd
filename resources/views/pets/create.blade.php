@@ -1,6 +1,6 @@
 <x-app-layout>
     <h1 class="addPetHeader">Huisdier toevoegen</h1>
-    <form class="formAddPet" method="POST" action="{{ route('pets.store') }}">
+    <form class="formAddPet" method="POST" action="{{ route('pets.store') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -32,6 +32,11 @@
         <x-input-label class="labelAddPet text-xl" for="details" :value="__('Belangrijke zaken')" />
         <x-text-input id="details" class="block mt-1 w-full" type="text" name="details" :value="old('details')" />
         <x-input-error :messages="$errors->get('details')" class="mt-2" />
+
+        <!-- image -->
+        <x-input-label class="labelAddPet text-xl" for="image" :value="__('Afbeelding')" />
+        <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
+        <x-input-error :messages="$errors->get('image')" class="mt-2" />
 
         <div class="buttonContainer">
             <input class="addButton bg-green-600" type="submit" value="Toevoegen">

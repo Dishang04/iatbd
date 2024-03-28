@@ -10,7 +10,7 @@
         <p class="">Belangrijke zaken: {{ $pet->details }}</p> 
     </section>
 
-    <a href="{{ route('messages.index') }}">Stel hier al uw vragen</a>
+    <a href="{{ route('messages.index', ['id' => $pet->user->name]) }}">Begin chat</a>
 
     {{-- <section class="informationContainer">
         <h2> Chat </h2>

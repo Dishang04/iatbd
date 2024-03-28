@@ -14,7 +14,10 @@
                     <p class="">Wanneer: {{ date('d-m-y', strtotime($pet->when)) }}</p>
                     <p class="">Uurtarief: €{{ $pet->hourlyRate }}</p>
                     <p class="">Duur: {{ $pet->durationHours }} uur</p>
-                    <p class="">Belangrijke zaken: {{ $pet->details }}</p>   
+                    <p class="">Belangrijke zaken: {{ $pet->details }}</p>  
+                    @if ($pet->image)
+                        <img src="{{ asset('storage/' . $pet->image) }}" alt="{{ $pet->name }}">
+                    @endif 
                 </div> 
             @endif
         @endforeach
