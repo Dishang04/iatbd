@@ -1,13 +1,13 @@
 <x-app-layout>
     <h1 class="myPetsHeader">Overzicht</h1>
-        
+
     <form class="filterForm" action="{{ route('pets.filter') }}" method="GET">
         <label> Diersoort: </label> <br>
-        <input type="checkbox" name="species[]" value="hond">
+        <input type="checkbox" name="species[]" value="hond" {{ in_array('hond', request()->input('species', [])) ? 'checked' : '' }}>
         <label>Hond</label> <br>
-        <input type="checkbox" name="species[]" value="Kat">
+        <input type="checkbox" name="species[]" value="Kat" {{ in_array('Kat', request()->input('species', [])) ? 'checked' : '' }}>
         <label>Kat</label> <br>
-        <input type="checkbox" name="species[]" value="Konijn">
+        <input type="checkbox" name="species[]" value="Konijn" {{ in_array('Konijn', request()->input('species', [])) ? 'checked' : '' }}>
         <label>Konijn</label> <br>
         <button class="filterButton bg-blue-600" type="submit">Filter</button>
     </form>

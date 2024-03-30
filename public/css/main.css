@@ -91,7 +91,7 @@ h1{
 
 /* LANDING/WELCOME PAGE */
 .welcomeHeader{
-    margin: 2% 10%;
+    text-align: center;
 }
 
 .welcomeOptions{
@@ -102,13 +102,26 @@ h1{
     width: 80%;
 }
 
+.welcomeP{
+    margin-bottom: 50%;
+}
+
+.welcomeButtonContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 40px;
+}
+
 @media screen and (min-width: 1000px){
     .welcomeHeader{
         margin: 2% 10%;
     }
     .welcomeOptions{
         margin: auto;
-        width: 80%;
+        width: 50%;
+    }
+    .welcomeP{
+        margin-bottom: 25%;
     }
 }
 

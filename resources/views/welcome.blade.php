@@ -22,16 +22,19 @@
             <h1 class="welcomeHeader">Oppassite</h1>
 
             <section class="welcomeOptions">
-                @if (Route::has('login'))
+                <p class="welcomeP">Heeft u al een account druk dan op inloggen.</p>
+                <div class="welcomeButtonContainer">
+                    @if (Route::has('login'))
                     @auth
                         <a href="{{ url('show') }}" class="optionsButton">Overzicht</a>
                     @else
-                        <a href="{{ route('login') }}" class="optionsButton loginButton">Inloggen</a>
+                        <a href="{{ route('login') }}" class="optionsButton">Inloggen</a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="optionsButton registerButton">Registreren</a>
                         @endif
                     @endauth
                 @endif
+                </div>
             </section>
         </main>
         {{-- <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"> --}}

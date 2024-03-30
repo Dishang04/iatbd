@@ -211,19 +211,60 @@ body {
 .informationContainer{
     width: 80%;
     padding: 20px;
-    margin: 0 auto;
+    margin: auto;
 }
 
-p{
-    /* font-size: 110%; */
-    line-height: 1.5;
-    margin-bottom: 20px;
+.informationP{
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.informationButtonsCnt{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
+
+.informationButton{
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 15%;
+    text-align: center;
+}
+
+.toMessageButton{
+    background-color: blue;
+    margin-top: 10px;
+}
+
+.reactionButton{
+    background-color: green;
+    margin-top: 40px;
+}
+
+@media screen and (min-width: 600px){
+    .informationButton{
+        width: 60%;
+    }
 }
 
 
 @media screen and (min-width: 1000px){
     .informationContainer{
         width: 45%;
+    }
+    .informationButton{
+        width: 50%;
+        margin-left: 25%;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .informationButton{
+        width: 30%;
+        margin-left: 35%;
     }
 }
   

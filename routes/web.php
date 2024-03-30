@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\ProfileController;
@@ -31,17 +32,25 @@ Route::resource('pets', PetController::class)
 
 Route::get('show', [PetController::class, 'show'])->name('pets.show');
 
-// Route::get('information', [PetController::class, 'information'])->name('pets.information');
 Route::get('information/{id}', [PetController::class, 'information'])->name('pets.information');
 
 Route::resource('messages', MessageController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/admin', [AdminController::class, 'adminPage'])->name('admin.adminPage');
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/admin', [AdminController::class, 'adminPage'])->name('admin.adminPage');
+    Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+    // Route::put('/admin/users/{user}/block', [AdminController::class, 'blockUser'])->name('admin.blockUsers');
+    // Route::put('/admin/users/{user}/unblock', [AdminController::class, 'unblockUser'])->name('admin.unblockUsers');
 });
 
 Route::get('/pets/filter', [PetController::class, 'filter'])->name('pets.filter');

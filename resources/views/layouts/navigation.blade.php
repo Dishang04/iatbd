@@ -12,15 +12,21 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Overzicht') }}
-                    </x-nav-link> --}}
                     <x-nav-link :href="route('pets.show')" :active="request()->routeIs('pets.show')">
                         {{ __('Overzicht') }}
                     </x-nav-link>
-                    @if(Auth::user()->sitter == 0)      <!-- menu item visible when you have a pet that needs a sitter -->
+
+                    <!-- menu item visible when you have a pet that needs a sitter -->
+                    @if(Auth::user()->sitter == 0)
                         <x-nav-link :href="route('pets.index')" :active="request()->routeIs('pets.index')">
                             {{ __('Mijn Huisdieren') }}
+                        </x-nav-link>
+                    @endif
+
+                    <!-- menu item visible when you are an admin -->
+                    @if(Auth::user()->admin == 1)
+                        <x-nav-link :href="route('admin.adminPage')" :active="request()->routeIs('admin.adminPage')">
+                            {{ __('Admin') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -81,12 +87,6 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            {{-- <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Overzicht') }}
-            </x-responsive-nav-link> --}}
-        </div>
-
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
@@ -108,6 +108,12 @@
                         {{ __('Mijn Huisdieren') }}
                     </x-responsive-nav-link>
                 @endif
+
+                @if(Auth::user()->admin == 1)
+                        <x-responsive-nav-link :href="route('admin.adminPage')" :active="request()->routeIs('admin.adminPage')">
+                            {{ __('Admin') }}
+                        </x-responsive-nav-link>
+                    @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
