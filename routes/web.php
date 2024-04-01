@@ -31,7 +31,6 @@ Route::resource('pets', PetController::class)
     ->middleware(['auth', 'verified']);
 
 Route::middleware(['auth', 'blocked'])->group(function () {
-    // Define your authenticated routes here
     Route::get('show', [PetController::class, 'show'])->name('pets.show');
 });
 
@@ -48,15 +47,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [AdminController::class, 'showUsers'])->name('admin.adminPage');
     Route::put('/admin/users/{user}/block', [AdminController::class, 'blockUser'])->name('admin.blockUser');
-
-
-    // Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
-    // Route::put('/admin/users/{user}/block', [AdminController::class, 'blockUser'])->name('admin.blockUsers');
-    // Route::put('/admin/users/{user}/unblock', [AdminController::class, 'unblockUser'])->name('admin.unblockUsers');
+    Route::put('/admin/users/{user}/unblock', [AdminController::class, 'unblockUser'])->name('admin.unblockUser');
+    Route::get('/admin/search', [AdminController::class, 'showUsers'])->name('admin.searchUsers');
 });
 
-
 Route::get('/pets/filter', [PetController::class, 'filter'])->name('pets.filter');
-
 
 require __DIR__.'/auth.php';

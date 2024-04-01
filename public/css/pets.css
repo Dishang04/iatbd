@@ -250,7 +250,6 @@ body {
     }
 }
 
-
 @media screen and (min-width: 1000px){
     .informationContainer{
         width: 45%;
@@ -267,4 +266,74 @@ body {
         margin-left: 35%;
     }
 }
+
   
+/* ADMIN PAGE */
+.searchbarWrapper{
+    text-align: center;
+}
+  
+.searchbar{
+    margin-top: 20px;
+    width: 60vw;
+}
+
+.searchbarButton{
+    margin-left: 20px;
+}
+
+.usersHeader{
+    text-align: center;
+    font-size: 24px;
+    margin: 40px 0px;
+}
+
+.userItem{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; 
+    row-gap: 10px;
+    place-items: center;
+}
+
+.userItemSplit{
+    margin: 0px auto 30px auto;
+    width: 90%;
+    border: 1px solid #ccc;
+}
+
+.userButton{
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.userBlockButton:hover{
+    background-color: #691111;
+}
+
+.userUnblockButton:hover{
+    background-color: #58E98E;
+    color: black;
+}
+
+.userNotFound{
+    text-align: center;
+    color: #FB000A;
+}
+
+@media screen and (min-width: 800px){
+    .searchbar{
+        width: 40vw;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .userItem{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 50px;
+    }
+    .userItemName{
+        grid-column-start: 2;
+    }
+}
