@@ -30,7 +30,10 @@ Route::resource('pets', PetController::class)
     ->only ('index', 'store', 'create')
     ->middleware(['auth', 'verified']);
 
-Route::get('show', [PetController::class, 'show'])->name('pets.show');
+Route::middleware(['auth', 'blocked'])->group(function () {
+    // Define your authenticated routes here
+    Route::get('show', [PetController::class, 'show'])->name('pets.show');
+});
 
 Route::get('information/{id}', [PetController::class, 'information'])->name('pets.information');
 
@@ -38,20 +41,20 @@ Route::resource('messages', MessageController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/admin', [AdminController::class, 'adminPage'])->name('admin.adminPage');
-// });
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/admin', [AdminController::class, 'adminPage'])->name('admin.adminPage');
-    Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+    Route::get('/admin', [AdminController::class, 'showUsers'])->name('admin.adminPage');
+    Route::put('/admin/users/{user}/block', [AdminController::class, 'blockUser'])->name('admin.blockUser');
+
+
+    // Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
     // Route::put('/admin/users/{user}/block', [AdminController::class, 'blockUser'])->name('admin.blockUsers');
     // Route::put('/admin/users/{user}/unblock', [AdminController::class, 'unblockUser'])->name('admin.unblockUsers');
 });
+
 
 Route::get('/pets/filter', [PetController::class, 'filter'])->name('pets.filter');
 

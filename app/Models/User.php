@@ -34,6 +34,7 @@ class User extends Authenticatable
         'password',
         'sitter',
         'admin',
+        'blocked',
     ];
 
     /**

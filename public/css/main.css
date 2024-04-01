@@ -95,11 +95,12 @@ h1{
 }
 
 .welcomeOptions{
-    background-color: grey;
     margin: 5% auto;
-    padding: 2rem;
-    border: 0.1rem solid #888;
-    width: 80%;
+    width: 80%;   
+    padding: 1rem 1rem 2rem 1rem;
+    border: 0.1rem solid #BFBFBF;
+    background-color: #BFBFBF;
+    box-shadow: 1rem 1rem 0.5rem #aaaaaa;
 }
 
 .welcomeP{

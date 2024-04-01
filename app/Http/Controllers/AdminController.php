@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function adminPage()
-    {
-        return view('admin.adminPage');
-    }
+    // public function adminPage()
+    // {
+    //     return view('admin.adminPage');
+    // }
 
     // public function deleteUser(User $user)
     // {
@@ -35,14 +35,16 @@ class AdminController extends Controller
     public function showUsers()
     {
         $users = User::all();
-        return view('admin.users', ['users' => $users]);
+        return view('admin.adminPage', ['users' => $users]);
     }
 
 
-    // public function blockUser(User $user)
-    // {
-    //     // Logic to block the user
-    // }
+    public function blockUser(User $user)
+    {
+        $user->update(['blocked' => true]); // Assuming 'blocked' is a boolean field in the users table
+        return redirect()->back()->with('success', 'User blocked successfully.');
+    }
+
 
     // public function unblockUser(User $user)
     // {

@@ -33,6 +33,12 @@
             </a>
         @endif
 
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <div class="buttonContainer">
             <input class="optionsButton loginButton" type="submit" value="Inloggen">
 
