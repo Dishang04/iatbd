@@ -51,6 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/search', [AdminController::class, 'showUsers'])->name('admin.searchUsers');
 });
 
+Route::post('/pets/{pet}/interest', [PetController::class, 'showInterest'])->name('pets.interest');
+
+
 Route::get('/pets/filter', [PetController::class, 'filter'])->name('pets.filter');
 
 require __DIR__.'/auth.php';

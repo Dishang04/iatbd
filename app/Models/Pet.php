@@ -17,10 +17,16 @@ class Pet extends Model
         'hourlyRate',
         'durationHours',
         'details',
+        'active'
         // 'question',
     ];
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
+    }
+
+    public function interestedUsers()
+    {
+        return $this->belongsToMany(User::class, 'interested_pet_user')->withPivot('active');
     }
 }

@@ -20,19 +20,19 @@ class PetController extends Controller
     }
 
     public function filter(Request $request): View
-{
-    $query = Pet::query();
+    {
+        $query = Pet::query();
 
-    if ($request->has('species')) {
-        $query->whereIn('species', $request->input('species'));
+        if ($request->has('species')) {
+            $query->whereIn('species', $request->input('species'));
+        }
+
+        // You can add more filters as needed
+
+        $pets = $query->with('user')->latest()->get();
+
+        return view('pets.show', ['pets' => $pets]);
     }
-
-    // You can add more filters as needed
-
-    $pets = $query->with('user')->latest()->get();
-
-    return view('pets.show', ['pets' => $pets]);
-}
 
     /**
      * Show the form for creating a new resource.
@@ -108,15 +108,20 @@ class PetController extends Controller
     }
 
     public function filterAnimals(Request $request)
-{
-    $query = Pet::query();
+    {
+        $query = Pet::query();
 
-    if ($request->has('species')) {
-        $query->whereIn('species', $request->input('species'));
+        if ($request->has('species')) {
+            $query->whereIn('species', $request->input('species'));
+        }
+
+        $animals = $query->get();
+
+        return view('pets.show', compact('animals'));
     }
-
-    $animals = $query->get();
-
-    return view('pets.show', compact('animals'));
-}
+    public function showInterest(Pet $pet)
+    {
+        $pet->update(['active' => false]);
+        return redirect()->route('pets.show')->with('success', 'Your interest in pet-sitting has been noted.');
+    }
 }

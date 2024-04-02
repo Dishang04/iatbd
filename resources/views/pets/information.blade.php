@@ -1,5 +1,5 @@
 <x-app-layout>
-    <a class="" href="{{ route('pets.show') }}">Terug</a>
+    <a class="prevButton test" href="{{ route('pets.show') }}">&laquo; Terug</a>
     <h1 class="myPetsHeader">{{ $pet->name }} </h1>
 
     <section class="informationContainer">
@@ -14,8 +14,16 @@
         @endif 
     </section>
 
-    <section class="informationButtonsCnt">
-        <a href="{{ route('messages.index') }}" class="informationButton toMessageButton">Stel hier al uw vragen</a>
-        <a href="" class="informationButton reactionButton">Ik wil oppassen</a>
-    </section>
+    @if (auth()->user()->sitter)
+        <section class="informationButtonsCnt">
+            <a href="{{ route('messages.index') }}" class="informationButton toMessageButton">Stel hier al uw vragen</a>
+            {{-- <a href="" class="informationButton reactionButton">Ik wil oppassen</a> --}}
+            <form action="{{ route('pets.interest', ['pet' => $pet->id]) }}" method="POST">
+                @csrf
+                <button type="submit" class="informationButton bg-cyan-600 mt-16">Ik wil oppassen</button>
+            </form>
+        </section>
+    @else
+        <a href="{{ route('messages.index') }}" class="informationButton toMessageButton">Bekijk hier alle vragen</a>
+    @endif
 </x-app-layout>
