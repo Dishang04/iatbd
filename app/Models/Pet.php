@@ -17,6 +17,7 @@ class Pet extends Model
         'hourlyRate',
         'durationHours',
         'details',
+        'image',
         'active'
         // 'question',
     ];

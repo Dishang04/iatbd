@@ -33,7 +33,6 @@ class Kernel extends HttpKernel
         // Other middleware entries...
         'blocked' => \App\Http\Middleware\BlockCheck::class,
     ];
-    
 
     protected $middlewareGroups = [
         'web' => [

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Notifications\PetSittingInterest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -59,8 +60,13 @@ class PetController extends Controller
         ]);
 
         // Store the image in the storage/app/public directory
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/images');
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('/images');
+        //     $validated['image'] = $imagePath;
+        // }
+
+        if($request->has('image')){
+            $imagePath = $request->file(key: 'image')->store(path: 'images', options: 'public');
             $validated['image'] = $imagePath;
         }
 
@@ -119,9 +125,19 @@ class PetController extends Controller
 
         return view('pets.show', compact('animals'));
     }
+    // public function showInterest(Pet $pet)
+    // {
+    //     $pet->update(['active' => false]);
+    //     return redirect()->route('pets.show')->with('success', 'Your interest in pet-sitting has been noted.');
+    // }
+
     public function showInterest(Pet $pet)
     {
         $pet->update(['active' => false]);
+        
+        // Notify pet owner
+        $pet->user->notify(new PetSittingInterest($pet));
+
         return redirect()->route('pets.show')->with('success', 'Your interest in pet-sitting has been noted.');
     }
 }

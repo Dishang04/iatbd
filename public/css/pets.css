@@ -156,6 +156,12 @@ body {
     font-size: 22px;
 }
 
+input[type=file]{
+    width: 90%;
+    margin: auto;
+    font-size: 22px;
+}
+
 .buttonContainer{
     margin: 10%;
     margin-left: 5%;
@@ -228,6 +234,11 @@ body {
     font-size: 22px;
 }
 
+.petImage{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .informationButtonsCnt{
     display: grid;
     grid-template-columns: 1fr;
@@ -262,6 +273,9 @@ body {
 @media screen and (min-width: 1000px){
     .informationContainer{
         width: 45%;
+    }
+    .informationButtonsCnt{
+        margin-bottom: 30px;
     }
     .informationButton{
         width: 50%;

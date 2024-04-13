@@ -16,12 +16,16 @@
                         {{ __('Overzicht') }}
                     </x-nav-link>
 
-                    <!-- menu item visible when you have a pet that needs a sitter -->
+                    <!-- menu item visible when account user is an owner who needs a pet sitter -->
                     @if(Auth::user()->sitter == 0)
                         <x-nav-link :href="route('pets.index')" :active="request()->routeIs('pets.index')">
                             {{ __('Mijn Huisdieren') }}
                         </x-nav-link>
                     @endif
+
+                    <x-nav-link :href="route('notifications.index')" :active="request()->routeIs('notifications.index')">
+                        {{ __('Notifications') }}
+                    </x-nav-link>
 
                     <!-- menu item visible when you are an admin -->
                     @if(Auth::user()->admin == 1)
