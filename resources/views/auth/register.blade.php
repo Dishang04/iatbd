@@ -56,7 +56,7 @@
             <a class="optionsButton prevButton" href="/">Terug</a>
         </div>
 
-        <a href="{{ route('login') }}">
+        <a class="forgotPwdButton" href="{{ route('login') }}">
             {{ __('Al een account?') }}
         </a>
 

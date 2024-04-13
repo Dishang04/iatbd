@@ -39,7 +39,7 @@
         <x-input-error :messages="$errors->get('image')" class="mt-2" />
 
         <div class="buttonContainer">
-            <input class="addButton bg-green-600" type="submit" value="Toevoegen">
+            <input class="addButton bg-blue-500" type="submit" value="Toevoegen">
     
             <a class="prevButton" href="{{ route('pets.index') }}">Terug</a>
         </div>

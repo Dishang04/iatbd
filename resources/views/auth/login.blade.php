@@ -21,17 +21,20 @@
 
         <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
-        <!-- Remember Me -->
-        <label for="remember_me" class="inline-flex items-center">
-            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-            <span class="ms-2 text-sm text-gray-600">{{ __('Onthoud mij') }}</span>
-        </label>
-
+        <section class="loginButtonContainer">   
         @if (Route::has('password.request'))
             <a class="forgotPwdButton" href="{{ route('password.request') }}">
                 {{ __('Wachtwoord vergeten?') }}
             </a>
         @endif
+        
+        <label for="remember_me" class="inline-flex items-center">
+            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+            <span class="ms-2 text-sm text-gray-600">{{ __('Onthoud mij') }}</span>
+        </label>
+
+    </section>
+
 
         @if (session('error'))
             <div class="alert alert-danger" role="alert">
@@ -41,12 +44,7 @@
 
         <div class="buttonContainer">
             <input class="optionsButton loginButton" type="submit" value="Inloggen">
-
             <a class="optionsButton prevButton" href="/">Terug</a>
-
-            {{-- <x-primary-button class="optionsButton">
-                {{ __('Log in') }}
-            </x-primary-button> --}}
         </div>
     </form>
 </x-guest-layout>
