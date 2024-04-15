@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -28,6 +29,13 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
+        $user = $request->user();
+        // Handle profile picture upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('profile', 'public');
+            $user->image = $imagePath;
+        }
+
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
@@ -47,6 +55,12 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+
+        // Delete profile picture if exists
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image);
+            $user->image = null;
+        }
 
         Auth::logout();
 
