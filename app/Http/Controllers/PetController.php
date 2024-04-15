@@ -55,15 +55,9 @@ class PetController extends Controller
             'hourlyRate' => ['required', 'string'],
             'durationHours' => ['required', 'integer', 'max:255'],
             'details' => [''],
-            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // Validate image file type and size
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             // 'question' => ['required', 'string', 'max:255'],
         ]);
-
-        // Store the image in the storage/app/public directory
-        // if ($request->hasFile('image')) {
-        //     $imagePath = $request->file('image')->store('/images');
-        //     $validated['image'] = $imagePath;
-        // }
 
         if($request->has('image')){
             $imagePath = $request->file(key: 'image')->store(path: 'images', options: 'public');

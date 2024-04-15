@@ -1,6 +1,6 @@
 <x-guest-layout>
     <h1 class="formHeader">Registreren</h1>
-    <form class="form" method="POST" action="{{ route('register') }}">
+    <form class="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -30,6 +30,16 @@
         <x-input-label for="email" :value="__('E-mailadres')" />
         <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+        <!-- image -->
+        {{-- <x-input-label class="labelAddPet text-xl" for="image" :value="__('Afbeelding')" />
+        <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
+        <x-input-error :messages="$errors->get('image')" class="mt-2" /> --}}
+
+        <!-- Image -->
+        <x-input-label for="image" :value="__('Profielfoto')" />
+        <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
+        <x-input-error :messages="$errors->get('image')" class="mt-2" />
 
         <!-- Password -->
         <x-input-label for="password" :value="__('Wachtwoord')" />

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('hourlyRate');
             $table->integer('durationHours');
             $table->string('details')->nullable();
-            $table->string('image')->nullable(); // Add this line to the migration
+            $table->string('image')->nullable();
             // $table->string('question');
             // $table->boolean('available');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();

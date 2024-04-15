@@ -5,6 +5,13 @@ body {
     font-family: "Epilogue", sans-serif;
 }
 
+.profileImg{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
 /* MY PETS PAGE (pets.index) / OVERVIEW PAGE (pets.show) */
 .myPetsHeader{
     font-size: 36px;

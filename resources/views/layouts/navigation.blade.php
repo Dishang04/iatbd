@@ -41,6 +41,13 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            {{-- <img class="profileImg" src="storage/images/3cXJVPxbpdDrQRmz3VIHkL4TLX4lMdRc3Xd5mngJ.jpg" alt="profiel foto"> --}}
+                            @if (Auth::user()->image)
+                                <img class="profileImg" src="{{ asset('storage/' . Auth::user()->image) }}" alt="{{ Auth::user()->name }}'s profile picture">
+                            @else
+                                <div class="profileImg bg-gray-200"></div>
+                            @endif
+
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -94,6 +101,11 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
+                @if (Auth::user()->image)
+                    <img class="profileImg float-left" src="{{ asset('storage/' . Auth::user()->image) }}" alt="{{ Auth::user()->name }}'s profile picture">
+                @else
+                    <div class="profileImg float-left bg-gray-200"></div>
+                @endif
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>

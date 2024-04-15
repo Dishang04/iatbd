@@ -39,10 +39,20 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'sitterChoice' => ['required', 'string'],
-            'admin' => ['string', 'in: 0']
+            'admin' => ['string', 'in: 0'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
-        // dd($request->input('sitterChoice'));
+        // $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file(key: 'image')->store(path: 'images', options: 'public');
+        }
+
+        // if($request->has('image')){
+        //     $imagePath = $request->file(key: 'image')->store(path: 'images', options: 'public');
+        //     $validated['image'] = $imagePath;
+        // }
 
         $user = User::create([
             'name' => $request->name,
@@ -52,6 +62,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'sitter' => $request->input('sitterChoice') === 'sitter',
             'admin' => $request->admin,
+            'image' => $imagePath,
         ]);
 
         event(new Registered($user));
