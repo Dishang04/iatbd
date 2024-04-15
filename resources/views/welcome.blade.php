@@ -30,7 +30,7 @@
                         @else
                             <a href="{{ route('login') }}" class="optionsButton">Inloggen</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="optionsButton registerButton">Registreren</a>
+                                <a href="{{ route('register') }}" class="optionsButton">Registreren</a>
                             @endif
                         @endauth
                     @endif

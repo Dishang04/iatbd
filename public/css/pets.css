@@ -63,14 +63,6 @@ body {
     border-top-right-radius: 5px;
 }
   
-/* .petItem > figure > img{
-    padding: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-} */
-  
 .petItem > p, .myItem > p{
     padding: 22px;
   }
@@ -107,9 +99,13 @@ body {
 }
 
 /* OVERVIEW PAGE (pets.show) */
+.overviewExpl{
+    padding: 10px 20px;
+}
+
 .filterForm {
     background: #fff;
-    max-width: 40em;
+    margin-top: 10px;
     margin-left: 40px;
     display: inline-block;
     border-radius: 5px;
@@ -120,14 +116,6 @@ body {
     margin-top: 10px;
     margin-bottom: 15px;
     border: 0.1rem solid #2e2e2e;
-    /* width: 100%; */
-    /* padding: 1rem; */
-    /* border: 0.1rem solid #ccc;
-    border-radius: 0.4rem;
-    box-sizing: border-box;
-    margin-top: 0.5rem;
-    margin-bottom: 2.5rem; */
-    /* resize: vertical; */
 }
 
 .filterButton{
@@ -210,21 +198,17 @@ input[type=file]{
     background-color: #50a5f2;
 }
 
-/* .prevButton{
-    background-color: #0a508e;
-    text-align: center;
-    width: 30%;
-    padding: 8px 16px;
-}
-
-.prevButton:hover {
-    background-color: #ddd;
-} */
-
 @media screen and (min-width: 1000px){
+    /* OVERVIEW PAGE (pets.show) */
+    .overviewExpl{
+        text-align: center;
+    }
+
+    /* ADD PET PAGE (pets.create) */
     .addPetHeader{
         margin: 1% 15%;
     }
+
     .formAddPet{
         margin: 2% 15%;
     }
@@ -382,3 +366,5 @@ input[type=file]{
         grid-column-start: 2;
     }
 }
+
+/* UPDATE PROFILE */

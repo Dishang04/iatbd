@@ -56,7 +56,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/notifications', [NotificationController::class, 'notifications'])->name('notifications.index');
 });
 
-
 Route::get('/pets/filter', [PetController::class, 'filter'])->name('pets.filter');
 
 require __DIR__.'/auth.php';

@@ -18,10 +18,10 @@
         @method('patch')
 
         <div>
-            <x-input-label for="image" :value="__('Profielfoto')" />
-            <input id="image" type="file" name="image" accept="image/*" class="mt-1 block w-full" />
+            <x-input-label class="mb-2" for="image" :value="__('Profielfoto')" />
+            <input class="text-2xl" id="image" type="file" name="image" accept="image/*" class="mt-1 block w-full" />
             @if ($user->image)
-                <img src="{{ asset('storage/' . $user->image) }}" alt="Profielfoto" class="mt-2 h-24 w-auto rounded-full" />
+                <img src="{{ asset('storage/' . $user->image) }}" alt="Profielfoto" class="mt-4 h-24 w-auto rounded-full" />
             @endif
             <x-input-error :messages="$errors->get('image')" class="mt-2" />
         </div>
@@ -45,14 +45,14 @@
         </div>
 
            <!-- CHOICE -->
-           <div>
+           {{-- <div>
             <p>Ik:</p>
                 <input type="radio" id="sitterChoiceYes" name="sitterChoice" value="sitter" {{ old('sitter') == 'true' ? 'checked' : '' }}>
                 <label for="sitterChoiceYes">ben een oppasser</label><br>
                 <input type="radio" id="sitterChoiceNo" name="sitterChoice" value="owner" {{ old('sitter') == 'false' ? 'checked' : '' }}>
                 <label for="sitterChoiceNo">zoek een oppasser</label><br>
                 <x-input-error :messages="$errors->get('sitter')" class="mt-2" />
-           </div>
+           </div> --}}
 
         <div>
             <x-input-label for="email" :value="__('Email')" />

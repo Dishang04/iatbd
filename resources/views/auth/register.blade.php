@@ -31,18 +31,17 @@
         <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
-        <!-- image -->
-        {{-- <x-input-label class="labelAddPet text-xl" for="image" :value="__('Afbeelding')" />
-        <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
-        <x-input-error :messages="$errors->get('image')" class="mt-2" /> --}}
-
         <!-- Image -->
-        <x-input-label for="image" :value="__('Profielfoto')" />
-        <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
-        <x-input-error :messages="$errors->get('image')" class="mt-2" />
+        <div class="imageCntr">
+            <x-input-label for="image" :value="__('Profielfoto')" /> 
+            <div>
+                <input class="uploadProfileImg" id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
+                <x-input-error :messages="$errors->get('image')" class="mt-2" />
+            </div>  
+        </div>
 
         <!-- Password -->
-        <x-input-label for="password" :value="__('Wachtwoord')" />
+        <x-input-label class="labelPwd" for="password" :value="__('Wachtwoord')" />
 
         <x-text-input id="password" class="block mt-1 w-full"
                         type="password"
@@ -61,7 +60,7 @@
         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
         <div class="buttonContainer buttonRegisterContainer">
-            <input class="optionsButton loginButton" type="submit" value="Registreren">
+            <input class="optionsButton registerButton" type="submit" value="Registreren">
     
             <a class="optionsButton prevButton" href="/">Terug</a>
         </div>
@@ -69,9 +68,5 @@
         <a class="forgotPwdButton" href="{{ route('login') }}">
             {{ __('Al een account?') }}
         </a>
-
-        {{-- <x-primary-button class="ms-4">
-            {{ __('Register') }}
-        </x-primary-button> --}}
     </form>
 </x-guest-layout>
