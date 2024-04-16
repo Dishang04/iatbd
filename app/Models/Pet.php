@@ -26,8 +26,8 @@ class Pet extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function interestedUsers()
+    public function sittingRequests()
     {
-        return $this->belongsToMany(User::class, 'interested_pet_user')->withPivot('active');
+        return $this->hasMany(PetSittingRequest::class);
     }
 }

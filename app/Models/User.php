@@ -17,6 +17,11 @@ class User extends Authenticatable
         return $this->hasMany(Pet::class);
     }
 
+    public function sitterRequests()
+    {
+        return $this->hasMany(PetSittingRequest::class, 'sitter_id');
+    }
+
     public function messages(): HasMany{
         return $this->hasMany(Message::class);
     }

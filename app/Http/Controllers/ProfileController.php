@@ -30,7 +30,7 @@ class ProfileController extends Controller
         $request->user()->fill($request->validated());
 
         $user = $request->user();
-        // Handle profile picture upload
+        // profile picture upload
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('profile', 'public');
             $user->image = $imagePath;

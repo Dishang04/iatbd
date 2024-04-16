@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
-use App\Notifications\PetSittingInterest;
+// use App\Notifications\PetSittingInterest;
+use App\Models\PetSittingRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -119,19 +120,16 @@ class PetController extends Controller
 
         return view('pets.show', compact('animals'));
     }
-    // public function showInterest(Pet $pet)
-    // {
-    //     $pet->update(['active' => false]);
-    //     return redirect()->route('pets.show')->with('success', 'Your interest in pet-sitting has been noted.');
-    // }
 
-    public function showInterest(Pet $pet)
+    public function sitRequest(Pet $pet): RedirectResponse
     {
-        $pet->update(['active' => false]);
-        
-        // Notify pet owner
-        $pet->user->notify(new PetSittingInterest($pet));
+        $request = new PetSittingRequest([
+            'pet_id' => $pet->id,
+            'sitter_id' => auth()->id(),
+            'status' => 'pending',
+        ]);
+        $request->save();
 
-        return redirect()->route('pets.show')->with('success', 'Your interest in pet-sitting has been noted.');
+        return redirect()->route('pets.show', $pet)->with('success', 'Your request has been sent to the pet owner.');
     }
 }

@@ -4,7 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\SitterController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\addPetController;
 
@@ -51,9 +52,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/users/{user}/unblock', [AdminController::class, 'unblockUser'])->name('admin.unblockUser');
     Route::get('/admin/search', [AdminController::class, 'showUsers'])->name('admin.searchUsers');
 
-    Route::post('/pets/{pet}/interest', [PetController::class, 'expressInterest'])->name('pets.interest');
-    // Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
-    Route::get('/notifications', [NotificationController::class, 'notifications'])->name('notifications.index');
+    // Route::post('/pets/{pet}/interest', [PetController::class, 'expressInterest'])->name('pets.interest');
+    Route::post('/pets/{pet}/sit-request', [PetController::class, 'sitRequest'])->name('pets.sitRequest');
+    Route::get('/requests', [RequestController::class, 'index'])->name('requests.index');
+    Route::get('/sitter', [SitterController::class, 'index'])->name('sitter.index');
+    Route::post('/requests/{request}/accept', [RequestController::class, 'accept'])->name('requests.accept');
+    Route::post('/requests/{request}/decline', [RequestController::class, 'decline'])->name('requests.decline');
 });
 
 Route::get('/pets/filter', [PetController::class, 'filter'])->name('pets.filter');
