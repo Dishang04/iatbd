@@ -95,6 +95,8 @@ h1{
 /* LANDING/WELCOME PAGE */
 .welcomeHeader{
     text-align: center;
+    margin: 10% 5%;
+    font-size: 3.2rem;
 }
 
 .welcomeOptions{

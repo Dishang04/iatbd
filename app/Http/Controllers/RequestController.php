@@ -9,7 +9,9 @@ class RequestController extends Controller
 {
     public function index()
     {
-        $requests = PetSittingRequest::whereIn('pet_id', auth()->user()->pets()->pluck('id'))->get();
+        $requests = PetSittingRequest::whereIn('pet_id', auth()->user()->pets()->pluck('id'))
+                    ->whereNotIn('status', ['accepted', 'declined'])
+                    ->get();
 
         return view('requests.index', compact('requests'));
     }

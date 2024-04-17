@@ -1,9 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Your Pet Sitting Requests') }}
-        </h2>
-    </x-slot>
+    <h1 class="myPetsHeader">Uw huisdieroppas verzoeken</h1>
 
     <div class="py-12">
         @if ($sitterRequests->isEmpty())

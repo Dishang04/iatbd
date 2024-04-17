@@ -53,6 +53,10 @@ body {
     border-radius: 5px;
 }
 
+.petItem{
+    position: relative;
+}
+
 .petItem > h2, .myItem > h2{
     font-size: 24px;
     background-color: blue;
@@ -65,7 +69,14 @@ body {
   
 .petItem > p, .myItem > p{
     padding: 22px;
-  }
+}
+
+.petImage{
+    /* Ensure the image fills its container while maintaining aspect ratio */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .petItem:hover{
     transform: translateY(-10px);
@@ -367,4 +378,40 @@ input[type=file]{
     }
 }
 
-/* UPDATE PROFILE */
+/* REQUEST PAGE */
+.requestContainer{
+    width: 90%;
+    padding: 20px;
+    margin: auto;
+}
+
+/* .requestItem{
+    margin-top: 50px;
+} */
+
+.requestButton{
+    padding: 5px 10px;
+    width: 50%;
+    color: white;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+
+.declineButton{
+    margin-bottom: 50px;
+}
+
+.acceptButton:hover{
+    background-color: #58E98E;
+    color: black;
+}
+
+.declineButton:hover{
+    background-color: #691111;
+}
+
+.requestItemSplit{
+    margin: 0px auto 30px auto;
+    width: 100%;
+    border: 1px solid #ccc;
+}

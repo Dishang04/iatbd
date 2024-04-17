@@ -24,7 +24,9 @@
                         <p class="">Soort dier: {{ $pet->species }}</p>
                         <p class="">Wanneer: {{ date('d-m-y', strtotime($pet->when)) }}</p> 
                         @if ($pet->image)
+                        <figure class="petImage">
                             <img src="{{ asset('storage/' . $pet->image) }}" alt="huisdier foto">
+                        </figure>
                         @endif
                     </div> 
                 </a>
