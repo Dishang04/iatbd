@@ -381,10 +381,6 @@ input[type=file]{
     margin: auto;
 }
 
-/* .requestItem{
-    margin-top: 50px;
-} */
-
 .requestButton{
     padding: 5px 10px;
     width: 50%;
@@ -410,4 +406,41 @@ input[type=file]{
     margin: 0px auto 30px auto;
     width: 100%;
     border: 1px solid #ccc;
+}
+
+/* REACTION PAGE */
+.reactionList{
+    margin: 0% 3%
+}
+
+.reactionItem{
+    margin-bottom: 7%;
+}
+
+@media screen and (min-width: 500px){
+    .reactionList{
+        margin: 0% 10%;
+    }
+    .reactionItem{
+        margin-bottom: 10%;
+    }
+}
+
+@media screen and (min-width: 600px){
+    .reactionList{
+        text-align: center;
+    }
+    .reactionItem{
+        margin-bottom: 7%;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .reactionList{
+        text-align: left;
+        margin-left: 15%;
+    }
+    .reactionItem{
+        margin-bottom: 4%;
+    }
 }
