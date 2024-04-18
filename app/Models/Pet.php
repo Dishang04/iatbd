@@ -18,7 +18,8 @@ class Pet extends Model
         'durationHours',
         'details',
         'image',
-        'active'
+        'available_for_sitting',
+        // 'active'
         // 'question',
     ];
 

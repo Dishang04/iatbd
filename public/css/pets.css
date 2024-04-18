@@ -53,11 +53,7 @@ body {
     border-radius: 5px;
 }
 
-.petItem{
-    position: relative;
-}
-
-.petItem > h2, .myItem > h2{
+.petItemHeader, .myItem > h2{
     font-size: 24px;
     background-color: blue;
     text-align: center;
@@ -67,7 +63,7 @@ body {
     border-top-right-radius: 5px;
 }
   
-.petItem > p, .myItem > p{
+.petItemP, .myItem > p{
     padding: 22px;
 }
 

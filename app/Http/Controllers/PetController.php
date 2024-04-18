@@ -121,8 +121,21 @@ class PetController extends Controller
         return view('pets.show', compact('animals'));
     }
 
+    // public function sitRequest(Pet $pet): RedirectResponse
+    // {
+    //     $request = new PetSittingRequest([
+    //         'pet_id' => $pet->id,
+    //         'sitter_id' => auth()->id(),
+    //         'status' => 'pending',
+    //     ]);
+    //     $request->save();
+
+    //     return redirect()->route('pets.show', $pet)->with('success', 'Your request has been sent to the pet owner.');
+    // }
+
     public function sitRequest(Pet $pet): RedirectResponse
     {
+        // Create a new sitting request
         $request = new PetSittingRequest([
             'pet_id' => $pet->id,
             'sitter_id' => auth()->id(),
@@ -130,6 +143,23 @@ class PetController extends Controller
         ]);
         $request->save();
 
+        // Update the availability of the pet to false
+        $pet->update(['available_for_sitting' => false]);
+
         return redirect()->route('pets.show', $pet)->with('success', 'Your request has been sent to the pet owner.');
+    }
+
+    public function decline(Request $httpRequest, PetSittingRequest $request)
+    {
+        // Update the status of the request to 'declined'
+        $request->update(['status' => 'declined']);
+
+        // Get the associated pet
+        $pet = $request->pet;
+
+        // Update the availability of the pet to true
+        $pet->update(['available_for_sitting' => true]);
+
+        return redirect()->route('requests.index')->with('success', 'Request declined successfully.'); 
     }
 }
