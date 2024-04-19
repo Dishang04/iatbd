@@ -19,8 +19,6 @@ class Pet extends Model
         'details',
         'image',
         'available_for_sitting',
-        // 'active'
-        // 'question',
     ];
 
     public function user(): BelongsTo{

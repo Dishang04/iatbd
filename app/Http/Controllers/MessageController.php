@@ -7,16 +7,18 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Pet;
 
 class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Pet $pet): View
     {
         return view('pets.messages', [
-            'messages' => Message::with('user')->latest()->get(),
+            'messages' => Message::where('pet_id', $pet->id)->with('user')->latest()->get(),
+            'pet' => $pet,
         ]);
     }
 
@@ -35,11 +37,17 @@ class MessageController extends Controller
     {
         $validated = $request->validate([
             'message' => 'required|string|max:255',
+            'pet_id' => 'required',
         ]);
- 
+    
+        if (!$validated['pet_id']) {
+            return back()->withErrors(['pet_id' => 'Pet ID is required.'])->withInput();
+        }
+    
         $request->user()->messages()->create($validated);
- 
-        return redirect(route('messages.index'));
+        $pet = Pet::findOrFail($validated['pet_id']);
+    
+        return redirect()->route('messages.index', $pet);
     }
 
     /**
@@ -56,9 +64,11 @@ class MessageController extends Controller
     public function edit(Message $message): View
     {
         Gate::authorize('update', $message);
- 
+        $pet = $message->pet;
+
         return view('pets.edit', [
             'message' => $message,
+            'pet' => $pet,
         ]);
     }
 
@@ -68,25 +78,26 @@ class MessageController extends Controller
     public function update(Request $request, Message $message): RedirectResponse
     {
         Gate::authorize('update', $message);
- 
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ]);
- 
+
         $message->update($validated);
- 
-        return redirect(route('messages.index'));
+        $pet = $message->pet;
+
+        return redirect()->route('messages.index', $pet);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Message $Message): RedirectResponse
+    public function destroy(Message $message): RedirectResponse
     {
-        Gate::authorize('delete', $Message);
- 
-        $Message->delete();
- 
-        return redirect(route('messages.index'));
+        Gate::authorize('delete', $message);
+        $pet = $message->pet;
+        $message->delete();
+
+        return redirect()->route('messages.index', $pet);
     }
 }

@@ -16,13 +16,13 @@
 
     @if (auth()->user()->sitter)
         <section class="informationButtonsCnt">
-            <a href="{{ route('messages.index') }}" class="informationButton toMessageButton">Stel hier al uw vragen</a>
+            <a href="{{ route('messages.index', $pet) }}" class="informationButton toMessageButton">Stel hier al uw vragen</a>
             <form action="{{ route('pets.sitRequest', ['pet' => $pet->id]) }}" method="POST">
                 @csrf
                 <button type="submit" class="informationButton bg-cyan-600 mt-16">Ik wil oppassen</button>
             </form>
         </section>
     @else
-        <a href="{{ route('messages.index') }}" class="informationButton toMessageButton">Bekijk hier alle vragen</a>
+        <a href="{{ route('messages.index', $pet) }}" class="informationButton toMessageButton">Bekijk hier alle vragen</a>
     @endif
 </x-app-layout>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
-// use App\Notifications\PetSittingInterest;
 use App\Models\PetSittingRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,8 +27,6 @@ class PetController extends Controller
         if ($request->has('species')) {
             $query->whereIn('species', $request->input('species'));
         }
-
-        // You can add more filters as needed
 
         $pets = $query->with('user')->latest()->get();
 
@@ -57,7 +54,6 @@ class PetController extends Controller
             'durationHours' => ['required', 'integer', 'max:255'],
             'details' => [''],
             'image' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            // 'question' => ['required', 'string', 'max:255'],
         ]);
 
         if($request->has('image')){
@@ -129,7 +125,6 @@ class PetController extends Controller
             'status' => 'pending',
         ]);
         $request->save();
-
         $pet->update(['available_for_sitting' => false]);
 
         return redirect()->route('pets.show', $pet)->with('success', 'Your request has been sent to the pet owner.');

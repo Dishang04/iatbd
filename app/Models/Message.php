@@ -12,10 +12,16 @@ class Message extends Model
 
     protected $fillable = [
         'message',
+        'pet_id',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function pet(): BelongsTo
+    {
+        return $this->belongsTo(Pet::class);
     }
 }
