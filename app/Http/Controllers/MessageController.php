@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Pet;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -94,10 +95,15 @@ class MessageController extends Controller
      */
     public function destroy(Message $message): RedirectResponse
     {
-        Gate::authorize('delete', $message);
+        if (Auth::user()->admin) {
+            $message->delete();
+        } 
+        else {
+            Gate::authorize('delete', $message);
+            $message->delete();
+        }
+        
         $pet = $message->pet;
-        $message->delete();
-
         return redirect()->route('messages.index', $pet);
     }
 }

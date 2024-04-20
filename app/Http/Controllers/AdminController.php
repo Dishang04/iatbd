@@ -17,7 +17,7 @@ class AdminController extends Controller
             $usersQuery->where('name', 'LIKE', '%' . $search . '%');
         }
 
-        $users = $usersQuery->where('blocked', false)->get();
+        $users = $usersQuery->where('blocked', false)->where('admin', false)->get();
         $blockedUsers = User::where('blocked', true)->get();
 
         return view('admin.adminPage', compact('users', 'blockedUsers'));

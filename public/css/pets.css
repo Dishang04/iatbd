@@ -267,13 +267,28 @@ input[type=file]{
 }
 
 .toMessageButton{
-    background-color: blue;
+    background-color: #0a508e;
+    color: white;
     margin-top: 10px;
 }
 
-.reactionButton{
-    margin-top: 40px;
+.toMessageButton:hover{
+    color: black;
+    background-color: #50a5f2;
 }
+
+.askToSitButton{
+    color: white;
+}
+
+.askToSitButton:hover{
+    color: black;
+    background-color: #50a5f2;
+}
+
+/* .reactionButton{
+    margin-top: 40px;
+} */
 
 @media screen and (min-width: 600px){
     .informationButton{

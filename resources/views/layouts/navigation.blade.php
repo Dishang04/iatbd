@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <img class="block h-9 w-auto fill-current" src="/images/logo.jpg" alt="logo">
                     </a>
                 </div>
 
@@ -48,7 +48,6 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            {{-- <img class="profileImg" src="storage/images/3cXJVPxbpdDrQRmz3VIHkL4TLX4lMdRc3Xd5mngJ.jpg" alt="profiel foto"> --}}
                             @if (Auth::user()->image)
                                 <img class="profileImg" src="{{ asset('storage/' . Auth::user()->image) }}" alt="{{ Auth::user()->name }}'s profile picture">
                             @else
@@ -69,14 +68,7 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profiel') }}
                         </x-dropdown-link>
-                    
-                        @if (Auth::user()->sitter == 0)  
-                            <x-dropdown-link :href="route('pets.index')">
-                                {{ __('Mijn Huisdieren') }}
-                            </x-dropdown-link>
-                        @endif
                        
-
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -130,13 +122,23 @@
                     <x-responsive-nav-link :href="route('pets.index')">
                         {{ __('Mijn Huisdieren') }}
                     </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('requests.index')">
+                        {{ __('Verzoeken') }}
+                    </x-responsive-nav-link>
+                @endif
+
+                @if(Auth::user()->sitter == 1)
+                    <x-responsive-nav-link :href="route('sitter.index')">
+                        {{ __('Reacties') }}
+                    </x-responsive-nav-link>  
                 @endif
 
                 @if(Auth::user()->admin == 1)
                         <x-responsive-nav-link :href="route('admin.adminPage')" :active="request()->routeIs('admin.adminPage')">
                             {{ __('Admin') }}
                         </x-responsive-nav-link>
-                    @endif
+                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

@@ -16,7 +16,7 @@
                     <p class="">Duur: {{ $pet->durationHours }} uur</p>
                     <p class="">Belangrijke zaken: {{ $pet->details }}</p>  
                     @if ($pet->image)
-                        <img src="{{ asset('storage/' . $pet->image) }}" alt="huisdier foto">
+                        <img class="petItemImg" src="{{ asset('storage/' . $pet->image) }}" alt="huisdier foto">
                     @endif 
                 </div> 
             @endif
