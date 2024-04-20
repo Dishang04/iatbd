@@ -19,7 +19,7 @@
 
         <div>
             <x-input-label class="mb-2" for="image" :value="__('Profielfoto')" />
-            <input class="text-2xl" id="image" type="file" name="image" accept="image/*" class="mt-1 block w-full" />
+            <input class="text-sm" id="image" type="file" name="image" accept="image/*" class="mt-1 block w-full" />
             @if ($user->image)
                 <img src="{{ asset('storage/' . $user->image) }}" alt="Profielfoto" class="mt-4 h-24 w-auto rounded-full" />
             @endif

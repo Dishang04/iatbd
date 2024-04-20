@@ -23,6 +23,8 @@
             </form>
         </section>
     @else
-        <a href="{{ route('messages.index', $pet) }}" class="informationButton toMessageButton">Bekijk hier alle vragen</a>
+        <section class="informationButtonsCnt">
+            <a href="{{ route('messages.index', $pet) }}" class="informationButton toMessageButton">Bekijk hier alle vragen</a> 
+        </section>
     @endif
 </x-app-layout>

@@ -8,7 +8,10 @@
             <ul class="reactionList">
                 @foreach ($sitterRequests as $request)
                     <li class="reactionItem">
-                        Verzoek voor huisdier: {{ $request->pet->name }} - Status: {{ ucfirst($request->status) }}
+                        <p>Verzoek voor huisdier: {{ $request->pet->name }}</p>
+                        <p>Datum: {{ date('d-m-y',strtotime($request->pet->when)) }}</p>
+                        <p>Status: {{ ucfirst($request->status) }}</p>  
+                        <img class="reactionPetImg" src="{{ asset('storage/' . $request->pet->image) }}" alt="">        
                     </li>
                 @endforeach
             </ul>

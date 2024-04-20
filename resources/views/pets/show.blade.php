@@ -17,17 +17,19 @@
     <section class="petsList listOverview">
         @foreach ($pets as $pet)
             @if ($pet->available_for_sitting)
-                <a href="{{ route('pets.information', ['id' => $pet->id]) }}">
+                {{-- <a href="{{ route('pets.information', ['id' => $pet->id]) }}"> --}}
                     <div class="petItem">
+                        <a href="{{ route('pets.information', ['id' => $pet->id]) }}">
                         <h2 class="petItemHeader"> {{ $pet->name }}</h2>
                         <p class="petItemP">Eigennaar naam: {{ $pet->user->name }}</p>
                         <p class="petItemP">Soort dier: {{ $pet->species }}</p>
                         <p class="petItemP">Wanneer: {{ date('d-m-y', strtotime($pet->when)) }}</p> 
                         @if ($pet->image)
-                            <img src="{{ asset('storage/' . $pet->image) }}" alt="huisdier foto">
+                            <img class="petItemImg" src="{{ asset('storage/' . $pet->image) }}" alt="huisdier foto">
                         @endif
+                        </a>
                     </div> 
-                </a>
+                {{-- </a> --}}
             @endif
         @endforeach
     </section> 
