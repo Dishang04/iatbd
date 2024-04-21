@@ -28,7 +28,7 @@
                     @endif
 
                     <!-- menu item visible when account user is a sitter and awaits answer from pet owner -->
-                    @if(Auth::user()->sitter == 1)
+                    @if(Auth::user()->sitter == 1 and Auth::user()->admin == 0)
                          <x-nav-link :href="route('sitter.index')" :active="request()->routeIs('sitter.index')">
                             {{ __('Reacties') }}
                         </x-nav-link>   
@@ -128,7 +128,7 @@
                     </x-responsive-nav-link>
                 @endif
 
-                @if(Auth::user()->sitter == 1)
+                @if(Auth::user()->sitter == 1 and Auth::user()->admin == 0)
                     <x-responsive-nav-link :href="route('sitter.index')">
                         {{ __('Reacties') }}
                     </x-responsive-nav-link>  
